@@ -1,8 +1,5 @@
-// import { Home } from "./pages/Home";
-
-import { NewRoom } from "./pages/NewRoom";
-import "./styles/global.scss";
+import Router from "./Router";
 
 export default function App() {
-  return <NewRoom />;
+  return <Router />;
 }
