@@ -1,5 +1,11 @@
-import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect } from "react";
+
+import {
+  GoogleAuthProvider,
+  onAuthStateChanged,
+  signInWithPopup,
+} from "firebase/auth";
+
 import { auth } from "../services/firebase";
 
 type User = {
@@ -21,6 +27,24 @@ export const AuthContext = createContext({} as AuthContextData);
 
 export function AuthProvider({ children }: AuthProviderProps) {
   const [user, setUser] = useState<User>();
+
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        const { displayName, photoURL, uid } = user;
+
+        if (!displayName || !photoURL) {
+          throw new Error("Missing information from Google Account.");
+        }
+
+        setUser({
+          id: uid,
+          name: displayName,
+          avatar: photoURL,
+        });
+      }
+    });
+  }, []);
 
   async function signInWithGoogle() {
     const provider = new GoogleAuthProvider();
