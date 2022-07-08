@@ -29,7 +29,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
   const [user, setUser] = useState<User>();
 
   useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
         const { displayName, photoURL, uid } = user;
 
@@ -43,6 +43,10 @@ export function AuthProvider({ children }: AuthProviderProps) {
           avatar: photoURL,
         });
       }
+
+      return () => {
+        unsubscribe();
+      };
     });
   }, []);
 
