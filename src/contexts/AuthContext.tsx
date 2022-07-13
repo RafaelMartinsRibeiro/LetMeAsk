@@ -1,12 +1,5 @@
 import { createContext, useState, useEffect } from "react";
-
-import {
-  GoogleAuthProvider,
-  onAuthStateChanged,
-  signInWithPopup,
-} from "firebase/auth";
-
-import { auth } from "../services/firebase";
+import { firebase, auth } from "../services/firebase";
 
 type User = {
   id: string;
@@ -29,7 +22,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
   const [user, setUser] = useState<User>();
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
+    const unsubscribe = auth.onAuthStateChanged((user) => {
       if (user) {
         const { displayName, photoURL, uid } = user;
 
@@ -43,17 +36,17 @@ export function AuthProvider({ children }: AuthProviderProps) {
           avatar: photoURL,
         });
       }
-
-      return () => {
-        unsubscribe();
-      };
     });
+
+    return () => {
+      unsubscribe();
+    };
   }, []);
 
   async function signInWithGoogle() {
-    const provider = new GoogleAuthProvider();
+    const provider = new firebase.auth.GoogleAuthProvider();
 
-    const result = await signInWithPopup(auth, provider);
+    const result = await auth.signInWithPopup(provider);
 
     if (result.user) {
       const { displayName, photoURL, uid } = result.user;
