@@ -1,16 +1,16 @@
 import { FormEvent, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import illustrationImg from "../assets/images/illustration.svg";
-import logoImg from "../assets/images/logo.svg";
-import googleIconImg from "../assets/images/google-icon.svg";
+import illustrationImg from "../../assets/images/illustration.svg";
+import logoImg from "../../assets/images/logo.svg";
+import googleIconImg from "../../assets/images/google-icon.svg";
 
-import "../styles/auth.scss";
+import "../../styles/auth.scss";
 
-import { Button } from "../components/Button";
-import { useAuth } from "../hooks/useAuth";
-import { Room } from "./Room";
-import { database } from "../services/firebase";
+import { Button } from "../../components/Button";
+import { useAuth } from "../../hooks/useAuth";
+import { database } from "../../services/firebase";
+import toast, { Toaster } from "react-hot-toast";
 
 export function Home() {
   const navigate = useNavigate();
@@ -34,7 +34,7 @@ export function Home() {
     const roomRef = await database.ref(`rooms/${roomCode}`).get();
 
     if (!roomRef.exists()) {
-      alert("Room does not exists.");
+      toast.error("Room does not exists.");
       return;
     }
 
@@ -43,6 +43,7 @@ export function Home() {
 
   return (
     <div id="pageAuth">
+      <Toaster position="top-center" reverseOrder={false} />
       <aside>
         <img
           src={illustrationImg}
