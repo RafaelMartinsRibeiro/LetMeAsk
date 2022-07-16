@@ -38,6 +38,11 @@ export function Home() {
       return;
     }
 
+    if (roomRef.val().endedAt) {
+      toast.error("Room already closed.");
+      return;
+    }
+
     navigate(`/rooms/${roomCode}`);
   }
 
