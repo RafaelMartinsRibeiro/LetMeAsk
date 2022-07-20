@@ -1,6 +1,6 @@
 <br />
 <h1 align="center">
-  <img alt="Firebase configuração" src="https://github.com/RafaelMartinsRibeiro/LetMeAsk/tree/master/.github/assets/firebase-logo.png" width="180px" /> 
+  <img alt="Firebase configuração" src="https://github.com/RafaelMartinsRibeiro/LetMeAsk/blob/master/.github/assets/firebase-logo.png" width="180px" /> 
   <br />
   <br />
   Guia Firebase
