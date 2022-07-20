@@ -38,7 +38,7 @@
 </h1>
 
 <h1 align="center">
-  <img alt="LetMeAskGif" src=".github/previewGif.gif" width="100%">
+  <img alt="LetmeaskGif" src=".github/assets/LetmeaskGif.gif" width="100%">
 </h1>
 
 
