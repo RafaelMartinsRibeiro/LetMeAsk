@@ -20,7 +20,7 @@
 
 
 <h1 align="center">
-  <img alt="LetMeAsk" src=".github/logo.svg" width="100%"> 
+  <img alt="LetMeAsk" src=".github/assets/logo.svg" width="30%"> 
 </h1>
 
 
@@ -34,7 +34,7 @@
   </p>
 
 <h1 align="center">
-  <img alt="LetMeAskPng" src=".github/preview.png" width="100%">
+  <img alt="LetMeAskPng" src=".github/assets/letmeask-capa.jpg" width="100%">
 </h1>
 
 <h1 align="center">
@@ -106,7 +106,7 @@ $ npm install || yarn install
 $ npm run dev || yarn dev
 # A aplicação será aberta na porta:3000 - acesse http://localhost:3000
 ```
-[Link Firebase](https://www.figma.com/community/file/1009824839797878169)
+[Link Firebase](https://github.com/RafaelMartinsRibeiro/LetMeAsk/tree/master/.github/firebase)
 
 
 ## :memo: Licença
